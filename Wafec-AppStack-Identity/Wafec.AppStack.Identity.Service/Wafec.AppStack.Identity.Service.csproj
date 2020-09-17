@@ -49,7 +49,19 @@
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleService.cs" />
+    <Compile Include="ServiceContext.cs" />
     <Compile Include="UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework">
+      <Version>6.4.4</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wafec.AppStack.Identity.Core\Wafec.AppStack.Identity.Core.csproj">
+      <Project>{cb05a028-3a98-4c68-9107-9f735e979fde}</Project>
+      <Name>Wafec.AppStack.Identity.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -45,8 +45,10 @@
     <Compile Include="GroupRole.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectGroup.cs" />
+    <Compile Include="ProjectGroupRole.cs" />
     <Compile Include="ProjectRole.cs" />
     <Compile Include="ProjectUser.cs" />
+    <Compile Include="ProjectUserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="User.cs" />

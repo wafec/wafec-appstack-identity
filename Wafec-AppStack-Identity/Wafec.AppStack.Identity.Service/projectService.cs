@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wafec.AppStack.Identity.Core;
+using Wafec.AppStack.Identity.Core.Database;
 
 namespace Wafec.AppStack.Identity.Service
 {
     public class ProjectService : IProjectService
     {
-        public ServiceContext ServiceContext { get; private set; }
+        public IRepository Repository { get; private set; }
 
-        public ProjectService(ServiceContext serviceContext)
+        public ProjectService(IRepository repository)
         {
-            this.ServiceContext = serviceContext;
+            this.Repository = repository;
         }
 
         public Project CreateProject(string name, string description, User owner)
@@ -26,7 +27,7 @@ namespace Wafec.AppStack.Identity.Service
                     Description = description,
                     Owner = owner
                 };
-                ServiceContext.ProjectSet.Add(project);
+                Repository.Add(project);
                 return project;
             }
             else
@@ -37,7 +38,7 @@ namespace Wafec.AppStack.Identity.Service
 
         public bool ProjectExists(string name)
         {
-            return ServiceContext.ProjectSet.Any(p => p.Name.ToLower().Equals(name.ToLower()));
+            return Repository.GetSet<Project>().Any(p => p.Name.ToLower().Equals(name.ToLower()));
         }
     }
 }

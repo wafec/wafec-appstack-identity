@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wafec.AppStack.Identity.Core;
+using Wafec.AppStack.Identity.Core.Database;
 
 namespace Wafec.AppStack.Identity.Service
 {
     public class UserService : IUserService
     {
-        public ServiceContext ServiceContext { get; private set; }
+        public IRepository Repository { get; private set; }
         public IPasswordService PasswordService { get; private set; }
 
-        public UserService(ServiceContext serviceContext,
+        public UserService(IRepository repository,
                            IPasswordService passwordService)
         {
-            ServiceContext = serviceContext;
+            Repository = repository;
             PasswordService = passwordService;
         }
 
@@ -45,12 +46,12 @@ namespace Wafec.AppStack.Identity.Service
 
         public bool UserExists(string name)
         {
-            return ServiceContext.UserSet.Any(u => u.Name.ToLower().Equals(name.ToLower()));
+            return Repository.GetSet<User>().Any(u => u.Name.ToLower().Equals(name.ToLower()));
         }
 
         public bool UserExists(string name, string password)
         {
-            return ServiceContext.UserSet.Any(u => u.Name.ToLower().Equals(name.ToLower()) && u.Password.Equals(password));
+            return Repository.GetSet<User>().Any(u => u.Name.ToLower().Equals(name.ToLower()) && u.Password.Equals(password));
         }
     }
 }

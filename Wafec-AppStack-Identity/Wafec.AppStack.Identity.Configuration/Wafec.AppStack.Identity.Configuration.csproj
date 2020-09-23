@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\ProjectConfiguration.cs" />
     <Compile Include="Database\ServiceContext.cs" />
     <Compile Include="Database\UserConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

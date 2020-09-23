@@ -16,6 +16,7 @@ namespace Wafec.AppStack.Identity.Configuration.IoC
         public override void Load()
         {
             Bind<IRepository>().To<ServiceContext>().InRequestScope();
+            Bind<IPasswordService>().To<PasswordService>();
             Bind<IUserService>().To<UserService>();
         }
     }

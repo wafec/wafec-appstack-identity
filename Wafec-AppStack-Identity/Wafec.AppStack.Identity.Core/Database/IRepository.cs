@@ -11,5 +11,6 @@ namespace Wafec.AppStack.Identity.Core.Database
         IEnumerable<T> GetSet<T>() where T : class;
         T Add<T>(T obj) where T : class;
         ITransaction BeginTransaction();
+        void SaveChanges();
     }
 }

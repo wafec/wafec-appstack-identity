@@ -17,7 +17,7 @@ namespace Wafec.AppStack.Identity.Service
             return string.Join("", hash.Select(x => x.ToString("x2")));
         }
 
-        public bool IsStrongEnought(string password)
+        public bool IsStrongEnough(string password)
         {
             return !string.IsNullOrEmpty(password) &&
                 password.Length > 8 &&

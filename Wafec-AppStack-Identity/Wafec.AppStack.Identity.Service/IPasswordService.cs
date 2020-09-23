@@ -8,7 +8,7 @@ namespace Wafec.AppStack.Identity.Service
 {
     public interface IPasswordService
     {
-        String GenerateHash(string password);
-        bool IsStrongEnought(string password);
+        string GenerateHash(string password);
+        bool IsStrongEnough(string password);
     }
 }

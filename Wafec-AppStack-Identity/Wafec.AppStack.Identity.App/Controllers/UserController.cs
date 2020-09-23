@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Wafec.AppStack.Identity.App.Models.UserController;
 using Wafec.AppStack.Identity.Core.Database;
 using Wafec.AppStack.Identity.Service;
 
@@ -20,11 +21,11 @@ namespace Wafec.AppStack.Identity.App.Controllers
             UserService = userService;
         }
 
-        public IHttpActionResult Post([FromBody] string name, [FromBody] string password)
+        public IHttpActionResult Post([FromBody] CreateUserModel model)
         {
             using (var t = Repository.BeginTransaction())
             {
-                var user = UserService.CreateUser(name, password);
+                var user = UserService.CreateUser(model.Username, model.Password);
                 t.Commit();
                 return Json(user);
             }

@@ -11,7 +11,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
 {
     public class ServiceContext : DbContext, IRepository
     {
-        public DbSet<User> UsetSet { get; set; }
+        public DbSet<User> UserSet { get; set; }
         public DbSet<Project> ProjectSet { get; set; }
 
         public ServiceContext() : base("ServiceContext")
@@ -26,7 +26,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
 
         public ITransaction BeginTransaction()
         {
-            return new Transaction(this.Database.BeginTransaction());
+            return new Transaction(this, this.Database.BeginTransaction());
         }
 
         public IEnumerable<T> GetSet<T>() where T : class
@@ -37,19 +37,28 @@ namespace Wafec.AppStack.Identity.Configuration.Database
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new ProjectConfiguration());
+        }
+
+        void IRepository.SaveChanges()
+        {
+            base.SaveChanges();
         }
 
         public class Transaction : ITransaction
         {
+            public ServiceContext DbContext { get; private set; }
             public DbContextTransaction DbTransaction { get; private set; }
 
-            public Transaction(DbContextTransaction dbTransaction)
+            public Transaction(ServiceContext dbContext, DbContextTransaction dbTransaction)
             {
+                DbContext = dbContext;
                 DbTransaction = dbTransaction;
             }
 
             public void Commit()
             {
+                DbContext.SaveChanges();
                 DbTransaction.Commit();
             }
 

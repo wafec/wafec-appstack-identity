@@ -24,7 +24,7 @@ namespace Wafec.AppStack.Identity.Service
         {
             if (!UserExists(name))
             {
-                if (!PasswordService.IsStrongEnought(password))
+                if (!PasswordService.IsStrongEnough(password))
                 {
                     throw new WeakPasswordException();
                 }
@@ -35,6 +35,7 @@ namespace Wafec.AppStack.Identity.Service
                         Name = name,
                         Password = PasswordService.GenerateHash(password)
                     };
+                    Repository.Add(user);
                     return user;
                 }
             }

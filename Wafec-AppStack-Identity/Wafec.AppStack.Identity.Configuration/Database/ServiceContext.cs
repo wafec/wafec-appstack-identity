@@ -38,6 +38,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
         {
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new ProjectConfiguration());
+            modelBuilder.Configurations.Add(new RoleConfiguration());
         }
 
         void IRepository.SaveChanges()

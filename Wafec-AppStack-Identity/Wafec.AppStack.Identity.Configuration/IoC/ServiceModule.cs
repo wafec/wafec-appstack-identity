@@ -18,6 +18,7 @@ namespace Wafec.AppStack.Identity.Configuration.IoC
             Bind<IRepository>().To<ServiceContext>().InRequestScope();
             Bind<IPasswordService>().To<PasswordService>();
             Bind<IUserService>().To<UserService>();
+            Bind<IRoleService>().To<RoleService>();
         }
     }
 }

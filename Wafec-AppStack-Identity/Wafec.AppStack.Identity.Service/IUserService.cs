@@ -12,5 +12,7 @@ namespace Wafec.AppStack.Identity.Service
         User CreateUser(string name, string password);
         bool UserExists(string name);
         bool UserExists(string name, string password);
+        UserRole AddRole(long userId, long roleId);
+        User FindUser(long id);
     }
 }

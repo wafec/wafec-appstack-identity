@@ -11,6 +11,8 @@ namespace Wafec.AppStack.Identity.Service
     {
         public string GenerateHash(string password)
         {
+            if (password == null)
+                throw new ArgumentNullException();
             byte[] bytes = Encoding.UTF8.GetBytes(password);
             SHA256Managed sha256Managed = new SHA256Managed();
             byte[] hash = sha256Managed.ComputeHash(bytes);
@@ -19,11 +21,16 @@ namespace Wafec.AppStack.Identity.Service
 
         public bool IsStrongEnough(string password)
         {
+            if (password == null)
+                throw new ArgumentNullException();
             return !string.IsNullOrEmpty(password) &&
-                password.Length > 8 &&
-                !password.ToUpper().Equals(password) &&
+                password.Length >= 8 &&
+                password.Length <= 50 &&
+                password.Where(c => char.IsLetter(c)).Count() >= 2 &&
+                password.Any(c => char.IsLetter(c) && char.IsUpper(c)) &&
                 password.Any(c => char.IsDigit(c)) &&
-                password.Any(c => !char.IsLetterOrDigit(c));
+                password.Any(c => !char.IsLetterOrDigit(c)) &&
+                !password.Any(c => char.IsWhiteSpace(c));
         }
     }
 }

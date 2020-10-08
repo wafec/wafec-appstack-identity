@@ -15,6 +15,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
             ToTable("USER");
             HasKey(u => u.Id);
 
+            Property(m => m.Id).HasColumnName("id");
             Property(m => m.Name).HasColumnName("username");
             Property(m => m.Password).HasColumnName("passwd");
         }

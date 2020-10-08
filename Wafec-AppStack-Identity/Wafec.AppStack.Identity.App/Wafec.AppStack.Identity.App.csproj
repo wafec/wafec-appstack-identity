@@ -206,15 +206,31 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\GroupRoleController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ProjectGroupController.cs" />
+    <Compile Include="Controllers\ProjectGroupRoleController.cs" />
+    <Compile Include="Controllers\ProjectRoleController.cs" />
+    <Compile Include="Controllers\ProjectUserController.cs" />
+    <Compile Include="Controllers\ProjectUserRoleController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserGroupController.cs" />
     <Compile Include="Controllers\UserRoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GroupController\CreateGroupModel.cs" />
+    <Compile Include="Models\GroupRoleController\CreateGroupRoleModel.cs" />
+    <Compile Include="Models\ProjectController\CreateProjectModel.cs" />
+    <Compile Include="Models\ProjectGroupController\CreateProjectGroupModel.cs" />
+    <Compile Include="Models\ProjectGroupRoleController\CreateProjectGroupRoleModel.cs" />
+    <Compile Include="Models\ProjectRoleController\CreateProjectRoleModel.cs" />
+    <Compile Include="Models\ProjectUserController\CreateProjectUserModel.cs" />
+    <Compile Include="Models\ProjectUserRoleController\CreateProjectUserRoleModel.cs" />
     <Compile Include="Models\RoleController\CreateRoleModel.cs" />
     <Compile Include="Models\UserController\CreateUserModel.cs" />
+    <Compile Include="Models\UserGroupController\CreateUserGroupModel.cs" />
     <Compile Include="Models\UserRoleController\CreateUserRoleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

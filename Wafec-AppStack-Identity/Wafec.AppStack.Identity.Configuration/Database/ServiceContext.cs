@@ -13,6 +13,16 @@ namespace Wafec.AppStack.Identity.Configuration.Database
     {
         public DbSet<User> UserSet { get; set; }
         public DbSet<Project> ProjectSet { get; set; }
+        public DbSet<Role> RoleSet { get; set; }
+        public DbSet<Group> GroupSet { get; set; }
+        public DbSet<UserRole> UserRoleSet { get; set; }
+        public DbSet<UserGroup> UserGroupSet { get; set; }
+        public DbSet<GroupRole> GroupRoleSet { get; set; }
+        public DbSet<ProjectUser> ProjectUserSet { get; set; }
+        public DbSet<ProjectRole> ProjectRoleSet { get; set; }
+        public DbSet<ProjectGroup> ProjectGroupSet { get; set; }
+        public DbSet<ProjectGroupRole> ProjectGroupRoleSet { get; set; }
+        public DbSet<ProjectUserRole> ProjectUserRoleSet { get; set; }
 
         public ServiceContext() : base("ServiceContext")
         {
@@ -39,6 +49,15 @@ namespace Wafec.AppStack.Identity.Configuration.Database
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new ProjectConfiguration());
             modelBuilder.Configurations.Add(new RoleConfiguration());
+            modelBuilder.Configurations.Add(new GroupConfiguration());
+            modelBuilder.Configurations.Add(new UserRoleConfiguration());
+            modelBuilder.Configurations.Add(new UserGroupConfiguration());
+            modelBuilder.Configurations.Add(new GroupRoleConfiguration());
+            modelBuilder.Configurations.Add(new ProjectUserConfiguration());
+            modelBuilder.Configurations.Add(new ProjectGroupConfiguration());
+            modelBuilder.Configurations.Add(new ProjectRoleConfiguration());
+            modelBuilder.Configurations.Add(new ProjectUserRoleConfiguration());
+            modelBuilder.Configurations.Add(new ProjectGroupRoleConfiguration());
         }
 
         void IRepository.SaveChanges()

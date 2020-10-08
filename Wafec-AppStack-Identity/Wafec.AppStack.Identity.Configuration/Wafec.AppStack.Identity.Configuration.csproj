@@ -41,10 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\GroupConfiguration.cs" />
+    <Compile Include="Database\GroupRoleConfiguration.cs" />
     <Compile Include="Database\ProjectConfiguration.cs" />
+    <Compile Include="Database\ProjectGroupConfiguration.cs" />
+    <Compile Include="Database\ProjectGroupRoleConfiguration.cs" />
+    <Compile Include="Database\ProjectRoleConfiguration.cs" />
+    <Compile Include="Database\ProjectUserConfiguration.cs" />
+    <Compile Include="Database\ProjectUserRoleConfiguration.cs" />
     <Compile Include="Database\RoleConfiguration.cs" />
     <Compile Include="Database\ServiceContext.cs" />
     <Compile Include="Database\UserConfiguration.cs" />
+    <Compile Include="Database\UserGroupConfiguration.cs" />
+    <Compile Include="Database\UserRoleConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IoC\ServiceModule.cs" />
   </ItemGroup>

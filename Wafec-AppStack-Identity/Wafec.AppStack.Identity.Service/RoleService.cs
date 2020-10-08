@@ -19,7 +19,7 @@ namespace Wafec.AppStack.Identity.Service
 
         public Role CreateRole(string name, string description)
         {
-            if (!Repository.GetSet<Role>().Any(r => r.Name.ToLower().Equals(name?.ToLower())))
+            if (!RoleExists(name))
             {
                 Role role = new Role();
                 role.Name = name;
@@ -31,6 +31,11 @@ namespace Wafec.AppStack.Identity.Service
             {
                 throw new ConflictException();
             }
+        }
+
+        public bool RoleExists(string name)
+        {
+            return Repository.GetSet<Role>().Any(r => r.Name.ToLower().Equals(name?.ToLower()));
         }
 
         public Role FindRole(long id)

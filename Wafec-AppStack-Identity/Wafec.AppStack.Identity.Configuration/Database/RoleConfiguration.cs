@@ -15,6 +15,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
             ToTable("ROLE");
             HasKey(m => m.Id);
 
+            Property(m => m.Id).HasColumnName("id");
             Property(m => m.Name).HasColumnName("name");
             Property(m => m.Description).HasColumnName("description");
         }

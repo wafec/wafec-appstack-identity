@@ -11,5 +11,6 @@ namespace Wafec.AppStack.Identity.Service
     {
         Role CreateRole(string name, string description);
         Role FindRole(long id);
+        bool RoleExists(string name);
     }
 }

@@ -8,18 +8,15 @@ using Wafec.AppStack.Identity.Core;
 
 namespace Wafec.AppStack.Identity.Configuration.Database
 {
-    public class ProjectConfiguration : EntityTypeConfiguration<Project>
+    public class GroupConfiguration : EntityTypeConfiguration<Group>
     {
-        public ProjectConfiguration()
+        public GroupConfiguration()
         {
-            ToTable("PROJECT");
+            ToTable("GROUP");
             HasKey(m => m.Id);
 
             Property(m => m.Id).HasColumnName("id");
             Property(m => m.Name).HasColumnName("name");
-            Property(m => m.Description).HasColumnName("description");
-            Property(m => m.OwnerId).HasColumnName("owner_id");
-            HasRequired(m => m.Owner).WithMany().HasForeignKey(m => m.OwnerId);
         }
     }
 }

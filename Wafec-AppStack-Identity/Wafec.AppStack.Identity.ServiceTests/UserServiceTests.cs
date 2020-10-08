@@ -55,8 +55,8 @@ namespace Wafec.AppStack.Identity.ServiceTests
         public void SetUp()
         {
             var userList = new List<User>();
-            userList.Add(new User() { Name = "User1", Password = "User1PasswordTest" });
-            userList.Add(new User() { Name = "User2", Password = "User2PasswordTest" });
+            userList.Add(new User() { Name = "User1", Password = "User1PasswordTest", Id = 1 });
+            userList.Add(new User() { Name = "User2", Password = "User2PasswordTest", Id = 2 });
             UserSet = userList;
             MockTransaction = new Mock<ITransaction>();
             MockRepository = new Mock<IRepository>();
@@ -106,6 +106,17 @@ namespace Wafec.AppStack.Identity.ServiceTests
             {
                 UserService.CreateUser("User3", null);
             });
+        }
+
+        [TestMethod]
+        public void TestUserExists()
+        {
+            var result = UserService.UserExists("User1");
+            Assert.IsTrue(result);
+            result = UserService.UserExists("USER1");
+            Assert.IsTrue(result);
+            result = UserService.UserExists("User3");
+            Assert.IsFalse(result);
         }
     }
 }

@@ -11,5 +11,10 @@ namespace Wafec.AppStack.Identity.Core
         public long Id { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
+        public bool Deleted { get; set; }
+        public long PasswordAlgorithmId { get; set; }
+        public virtual PasswordAlgorithm PasswordAlgorithm { get; set; }
+        public long PasswordLevelId { get; set; }
+        public virtual PasswordLevel PasswordLevel { get; set; }
     }
 }

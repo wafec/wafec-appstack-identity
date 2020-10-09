@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Wafec.AppStack.Identity.Core
 {
-    public class Role
+    public class PasswordLevel
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public bool Deleted { get; set; }
     }
 }

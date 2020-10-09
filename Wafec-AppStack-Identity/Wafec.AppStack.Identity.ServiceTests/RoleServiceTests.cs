@@ -81,8 +81,10 @@ namespace Wafec.AppStack.Identity.ServiceTests
             Assert.IsTrue(result);
             result = RoleService.RoleExists("Role3");
             Assert.IsFalse(result);
-            result = RoleService.RoleExists(null);
-            Assert.IsFalse(result);
+            Assert.ThrowsException<InvalidDataException>(() =>
+            {
+                RoleService.RoleExists(null);
+            });
         }
 
         [TestMethod]
@@ -101,6 +103,24 @@ namespace Wafec.AppStack.Identity.ServiceTests
             Assert.IsNotNull(role);
             Assert.AreEqual(1, role.Id);
             Assert.AreEqual("Role1", role.Name);
+        }
+
+        [TestMethod]
+        public void TestUpdateRoleWhenConflicting()
+        {
+            Assert.ThrowsException<ConflictException>(() =>
+            {
+                RoleService.UpdateRole(1, "Role2", "Any");
+            });
+        }
+
+        [TestMethod]
+        public void TestUpdateRole()
+        {
+            MockRepository.Setup(repo => repo.Update<Role>(It.IsAny<Role>())).Returns(() => RoleSet.First(r => r.Id == 1));
+            var role = RoleService.UpdateRole(1, "Role3", "Any");
+            Assert.AreEqual(1, role.Id);
+            Assert.AreEqual("Role3", role.Name);
         }
     }
 }

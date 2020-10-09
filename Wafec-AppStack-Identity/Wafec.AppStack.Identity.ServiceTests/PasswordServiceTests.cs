@@ -22,7 +22,7 @@ namespace Wafec.AppStack.Identity.ServiceTests
         [TestMethod]
         public void TestIsStrongEnoughWhenEmpty()
         {
-            var result = PasswordService.IsStrongEnough("");
+            var result = PasswordService.IsStrongEnough("", PasswordLevels.STRONG);
             Assert.IsFalse(result);
         }
 
@@ -31,38 +31,38 @@ namespace Wafec.AppStack.Identity.ServiceTests
         {
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                PasswordService.IsStrongEnough(null);
+            PasswordService.IsStrongEnough(null, PasswordLevels.STRONG);
             });
         }
 
         [TestMethod]
         public void TestIsStrongEnoughWhenShort()
         {
-            var result = PasswordService.IsStrongEnough("1234567");
+            var result = PasswordService.IsStrongEnough("1234567", PasswordLevels.STRONG);
             Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void TestIsStrongEnoughWhenBreakingRules()
         {
-            var result = PasswordService.IsStrongEnough("12345678");
+            var result = PasswordService.IsStrongEnough("12345678", PasswordLevels.STRONG);
             Assert.IsFalse(result);
-            result = PasswordService.IsStrongEnough("AAAAAAAA");
+            result = PasswordService.IsStrongEnough("AAAAAAAA", PasswordLevels.STRONG);
             Assert.IsFalse(result);
-            result = PasswordService.IsStrongEnough("Aaaaaaaa");
+            result = PasswordService.IsStrongEnough("Aaaaaaaa", PasswordLevels.STRONG);
             Assert.IsFalse(result);
-            result = PasswordService.IsStrongEnough("A1234567");
+            result = PasswordService.IsStrongEnough("A1234567", PasswordLevels.STRONG);
             Assert.IsFalse(result);
-            result = PasswordService.IsStrongEnough("A 123@a456");
+            result = PasswordService.IsStrongEnough("A 123@a456", PasswordLevels.STRONG);
             Assert.IsFalse(result);
-            result = PasswordService.IsStrongEnough("A123456a");
+            result = PasswordService.IsStrongEnough("A123456a", PasswordLevels.STRONG);
             Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void TestIsStrongEnough()
         {
-            var result = PasswordService.IsStrongEnough("%a123456A");
+            var result = PasswordService.IsStrongEnough("%a123456A", PasswordLevels.STRONG);
             Assert.IsTrue(result);
         }
 
@@ -79,7 +79,7 @@ namespace Wafec.AppStack.Identity.ServiceTests
         public void TestIsStrongEnoughWhenBiggerButValid()
         {
             var password = GenerateValidPasswordRandom(51);
-            var result = PasswordService.IsStrongEnough(password);
+            var result = PasswordService.IsStrongEnough(password, PasswordLevels.STRONG);
             Assert.IsFalse(result);
         }
 
@@ -87,7 +87,7 @@ namespace Wafec.AppStack.Identity.ServiceTests
         public void TestIsStrongEnoughWhenAlmostBiggerButValid()
         {
             var password = GenerateValidPasswordRandom(50);
-            var result = PasswordService.IsStrongEnough(password);
+            var result = PasswordService.IsStrongEnough(password, PasswordLevels.STRONG);
             Assert.IsTrue(result);
         }
 
@@ -96,7 +96,7 @@ namespace Wafec.AppStack.Identity.ServiceTests
         {
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                PasswordService.GenerateHash(null);
+                PasswordService.GenerateHash(null, PasswordAlgorithms.SHA256);
             });
         }
     }

@@ -229,6 +229,7 @@
     <Compile Include="Models\ProjectUserController\CreateProjectUserModel.cs" />
     <Compile Include="Models\ProjectUserRoleController\CreateProjectUserRoleModel.cs" />
     <Compile Include="Models\RoleController\CreateRoleModel.cs" />
+    <Compile Include="Models\UserController\ChangeUserPasswordModel.cs" />
     <Compile Include="Models\UserController\CreateUserModel.cs" />
     <Compile Include="Models\UserGroupController\CreateUserGroupModel.cs" />
     <Compile Include="Models\UserRoleController\CreateUserRoleModel.cs" />

@@ -63,8 +63,8 @@ namespace Wafec.AppStack.Identity.ServiceTests
             MockRepository.Setup(repository => repository.GetSet<User>()).Returns(() => UserSet);
             MockRepository.Setup(repository => repository.BeginTransaction()).Returns(() => Transaction);
             MockPasswordService = new Mock<IPasswordService>();
-            MockPasswordService.Setup(passwordService => passwordService.IsStrongEnough(It.IsAny<string>())).Returns(true);
-            MockPasswordService.Setup(passwordService => passwordService.GenerateHash(It.IsAny<string>())).Returns("UserPasswordTest");
+            MockPasswordService.Setup(passwordService => passwordService.IsStrongEnough(It.IsAny<string>(), It.IsAny<PasswordLevels>())).Returns(true);
+            MockPasswordService.Setup(passwordService => passwordService.GenerateHash(It.IsAny<string>(), It.IsAny<PasswordAlgorithms>())).Returns("UserPasswordTest");
         }
 
         [TestMethod]
@@ -79,7 +79,7 @@ namespace Wafec.AppStack.Identity.ServiceTests
         [TestMethod]
         public void TestCreateWithNotStringPassword()
         {
-            MockPasswordService.Setup(passwordService => passwordService.IsStrongEnough(It.IsAny<string>())).Returns(false);
+            MockPasswordService.Setup(passwordService => passwordService.IsStrongEnough(It.IsAny<string>(), It.IsAny<PasswordLevels>())).Returns(false);
             Assert.ThrowsException<WeakPasswordException>(() =>
             {
                 UserService.CreateUser("User3", "Any");
@@ -98,11 +98,11 @@ namespace Wafec.AppStack.Identity.ServiceTests
         [TestMethod]
         public void TestArgumentNull()
         {
-            Assert.ThrowsException<ArgumentNullException>(() =>
+            Assert.ThrowsException<InvalidDataException>(() =>
             {
                 UserService.CreateUser(null, "Any");
             });
-            Assert.ThrowsException<ArgumentNullException>(() => 
+            Assert.ThrowsException<InvalidDataException>(() => 
             {
                 UserService.CreateUser("User3", null);
             });

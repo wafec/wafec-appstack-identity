@@ -25,5 +25,27 @@ namespace Wafec.AppStack.Identity.App.Controllers
                 return Json(user);
             }
         }
+
+        public IHttpActionResult Delete(long id)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                UserService.DeleteUser(id);
+                t.Commit();
+                return Ok();
+            }
+        }
+
+        [HttpPost]
+        [Route("{id}/changepassword")]
+        public IHttpActionResult ChangePassword(long id, [FromBody] ChangeUserPasswordModel model)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                var user = UserService.ChangePassword(id, model.CurrentPassword, model.NewPassword);
+                t.Commit();
+                return Json(user);
+            }
+        }
     }
 }

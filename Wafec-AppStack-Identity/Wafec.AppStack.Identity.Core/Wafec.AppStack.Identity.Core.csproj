@@ -45,6 +45,8 @@
     <Compile Include="Group.cs" />
     <Compile Include="GroupRole.cs" />
     <Compile Include="Database\IRepository.cs" />
+    <Compile Include="PasswordAlgorithm.cs" />
+    <Compile Include="PasswordLevel.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectGroup.cs" />
     <Compile Include="ProjectGroupRole.cs" />

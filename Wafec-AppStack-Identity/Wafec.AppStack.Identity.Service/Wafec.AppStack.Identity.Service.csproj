@@ -41,13 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
     <Compile Include="ConflictException.cs" />
     <Compile Include="GroupService.cs" />
     <Compile Include="IGroupService.cs" />
+    <Compile Include="InvalidDataException.cs" />
     <Compile Include="IPasswordService.cs" />
     <Compile Include="IProjectService.cs" />
     <Compile Include="IRoleService.cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="PasswordAlgorithms.cs" />
+    <Compile Include="PasswordLevels.cs" />
     <Compile Include="PasswordService.cs" />
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -14,5 +14,9 @@ namespace Wafec.AppStack.Identity.Service
         bool UserExists(string name, string password);
         UserRole AddRole(long userId, long roleId);
         User FindUser(long id);
+        User ChangePassword(long id, string currentPassword, string newPassword);
+        void DeleteUser(long id);
+        User FindUser(string name);
+        User FindUser(string name, string password);
     }
 }

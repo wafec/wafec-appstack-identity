@@ -18,6 +18,10 @@ namespace Wafec.AppStack.Identity.Configuration.Database
             Property(m => m.Id).HasColumnName("id");
             Property(m => m.Name).HasColumnName("username");
             Property(m => m.Password).HasColumnName("passwd");
+            Property(m => m.PasswordAlgorithmId).HasColumnName("password_algorithm_id");
+            Property(m => m.PasswordLevelId).HasColumnName("password_level_id");
+            HasRequired(m => m.PasswordAlgorithm).WithMany().HasForeignKey(m => m.PasswordAlgorithmId);
+            HasRequired(m => m.PasswordLevel).WithMany().HasForeignKey(m => m.PasswordLevelId);
         }
     }
 }

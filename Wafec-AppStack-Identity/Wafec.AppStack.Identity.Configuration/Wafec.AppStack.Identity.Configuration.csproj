@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Database\GroupConfiguration.cs" />
     <Compile Include="Database\GroupRoleConfiguration.cs" />
+    <Compile Include="Database\PasswordAlgorithmConfiguration.cs" />
+    <Compile Include="Database\PasswordLevelConfiguration.cs" />
     <Compile Include="Database\ProjectConfiguration.cs" />
     <Compile Include="Database\ProjectGroupConfiguration.cs" />
     <Compile Include="Database\ProjectGroupRoleConfiguration.cs" />

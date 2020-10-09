@@ -12,5 +12,7 @@ namespace Wafec.AppStack.Identity.Core.Database
         T Add<T>(T obj) where T : class;
         ITransaction BeginTransaction();
         void SaveChanges();
+        T Update<T>(T obj) where T : class;
+        void Delete<T>(T obj) where T : class;
     }
 }

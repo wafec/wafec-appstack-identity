@@ -31,5 +31,25 @@ namespace Wafec.AppStack.Identity.App.Controllers
                 return Json(role);
             }
         }
+
+        public IHttpActionResult Put(long id, [FromBody] CreateRoleModel model)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                var role = RoleService.UpdateRole(id, model.Name, model.Description);
+                t.Commit();
+                return Json(role);
+            }
+        }
+
+        public IHttpActionResult Delete(long id)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                RoleService.DeleteRole(id);
+                t.Commit();
+                return Ok();
+            }
+        }
     }
 }

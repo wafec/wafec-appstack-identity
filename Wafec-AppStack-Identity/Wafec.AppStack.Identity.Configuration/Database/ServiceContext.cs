@@ -23,6 +23,8 @@ namespace Wafec.AppStack.Identity.Configuration.Database
         public DbSet<ProjectGroup> ProjectGroupSet { get; set; }
         public DbSet<ProjectGroupRole> ProjectGroupRoleSet { get; set; }
         public DbSet<ProjectUserRole> ProjectUserRoleSet { get; set; }
+        public DbSet<PasswordAlgorithm> PasswordAlgorithmSet { get; set; }
+        public DbSet<PasswordLevel> PasswordLevelSet { get; set; }
 
         public ServiceContext() : base("ServiceContext")
         {
@@ -41,7 +43,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
 
         public IEnumerable<T> GetSet<T>() where T : class
         {
-            return this.Set<T>();
+            return base.Set<T>();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -58,11 +60,24 @@ namespace Wafec.AppStack.Identity.Configuration.Database
             modelBuilder.Configurations.Add(new ProjectRoleConfiguration());
             modelBuilder.Configurations.Add(new ProjectUserRoleConfiguration());
             modelBuilder.Configurations.Add(new ProjectGroupRoleConfiguration());
+            modelBuilder.Configurations.Add(new PasswordAlgorithmConfiguration());
+            modelBuilder.Configurations.Add(new PasswordLevelConfiguration());
         }
 
         void IRepository.SaveChanges()
         {
             base.SaveChanges();
+        }
+
+        public T Update<T>(T obj) where T : class
+        {
+            base.Entry<T>(obj).State = EntityState.Modified;
+            return obj;
+        }
+
+        public void Delete<T>(T obj) where T : class
+        {
+            base.Set<T>().Remove(obj);
         }
 
         public class Transaction : ITransaction

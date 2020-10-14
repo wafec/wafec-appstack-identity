@@ -11,7 +11,7 @@ namespace Wafec.AppStack.Identity.Service
     {
         Project CreateProject(string name, string description, long ownerId);
         bool ProjectExists(string name);
-        ProjectUser AddUser(long projectId, long userId);
+        ProjectUser AddProjectUser(long projectId, long userId);
         Project FindProject(long id);
         ProjectRole AddRole(long projectId, long roleId);
         ProjectGroup AddGroup(long projectId, long groupId);

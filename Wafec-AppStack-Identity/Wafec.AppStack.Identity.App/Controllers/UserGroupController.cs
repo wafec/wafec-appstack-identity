@@ -25,7 +25,7 @@ namespace Wafec.AppStack.Identity.App.Controllers
         {
             using (var t = Repository.BeginTransaction())
             {
-                var userGroup = GroupService.AddUser(model.GroupId, model.UserId);
+                var userGroup = GroupService.AddUserGroup(model.GroupId, model.UserId);
                 t.Commit();
                 return Json(userGroup);
             }

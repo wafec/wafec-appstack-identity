@@ -17,6 +17,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
 
             Property(m => m.Id).HasColumnName("id");
             Property(m => m.Name).HasColumnName("name");
+            Property(m => m.Deleted).HasColumnName("deleted");
         }
     }
 }

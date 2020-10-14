@@ -25,7 +25,7 @@ namespace Wafec.AppStack.Identity.App.Controllers
         {
             using (var t = Repository.BeginTransaction())
             {
-                var groupRole = GroupService.AddRole(model.GroupId, model.RoleId);
+                var groupRole = GroupService.AddGroupRole(model.GroupId, model.RoleId);
                 t.Commit();
                 return Json(groupRole);
             }

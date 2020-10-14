@@ -25,7 +25,7 @@ namespace Wafec.AppStack.Identity.App.Controllers
         {
             using (var t = Repository.BeginTransaction())
             {
-                var projectUser = ProjectService.AddUser(model.ProjectId, model.UserId);
+                var projectUser = ProjectService.AddProjectUser(model.ProjectId, model.UserId);
                 t.Commit();
                 return Json(projectUser);
             }

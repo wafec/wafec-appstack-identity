@@ -26,7 +26,7 @@ namespace Wafec.AppStack.Identity.App.Controllers
         {
             using (var t = Repository.BeginTransaction())
             {
-                UserRole userRole = UserService.AddRole(model.UserId, model.RoleId);
+                UserRole userRole = UserService.AddUserRole(model.UserId, model.RoleId);
                 t.Commit();
                 return Json(userRole);
             }

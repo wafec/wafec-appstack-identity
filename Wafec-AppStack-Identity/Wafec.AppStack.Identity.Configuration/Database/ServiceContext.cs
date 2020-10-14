@@ -25,6 +25,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
         public DbSet<ProjectUserRole> ProjectUserRoleSet { get; set; }
         public DbSet<PasswordAlgorithm> PasswordAlgorithmSet { get; set; }
         public DbSet<PasswordLevel> PasswordLevelSet { get; set; }
+        public DbSet<AuthToken> AuthToken { get; set; }
 
         public ServiceContext() : base("ServiceContext")
         {
@@ -62,6 +63,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
             modelBuilder.Configurations.Add(new ProjectGroupRoleConfiguration());
             modelBuilder.Configurations.Add(new PasswordAlgorithmConfiguration());
             modelBuilder.Configurations.Add(new PasswordLevelConfiguration());
+            modelBuilder.Configurations.Add(new AuthTokenConfiguration());
         }
 
         void IRepository.SaveChanges()

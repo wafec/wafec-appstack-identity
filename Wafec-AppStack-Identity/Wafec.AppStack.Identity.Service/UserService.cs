@@ -115,7 +115,7 @@ namespace Wafec.AppStack.Identity.Service
             }
         }
 
-        public UserRole AddRole(long userId, long roleId)
+        public UserRole AddUserRole(long userId, long roleId)
         {
             if (!Repository.GetSet<UserRole>().Any(ur => ur.RoleId == roleId && ur.UserId == userId))
             {
@@ -211,6 +211,22 @@ namespace Wafec.AppStack.Identity.Service
         public bool UserExists(string name, string password)
         {
             return FindUser(name, password) != null;
+        }
+
+        public void RemoveUserRole(long userId, long roleId)
+        {
+            var userRole = FindUserRole(userId, roleId);
+            userRole.Deleted = true;
+            Repository.Update(userRole);
+        }
+
+        public UserRole FindUserRole(long userId, long roleId)
+        {
+            var userRole = Repository.GetSet<UserRole>().FirstOrDefault(ur => ur.Deleted == false && ur.UserId == userId && ur.RoleId == roleId);
+            if (userRole != null)
+                return userRole;
+            else
+                throw new NotFoundException();
         }
 
         class UserViewInternal

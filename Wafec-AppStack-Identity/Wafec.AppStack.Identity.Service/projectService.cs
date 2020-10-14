@@ -48,7 +48,7 @@ namespace Wafec.AppStack.Identity.Service
             return Repository.GetSet<Project>().Any(p => p.Name.ToLower().Equals(name.ToLower()));
         }
 
-        public ProjectUser AddUser(long projectId, long userId)
+        public ProjectUser AddProjectUser(long projectId, long userId)
         {
             if (!Repository.GetSet<ProjectUser>().Any(pu => pu.ProjectId == projectId && pu.UserId == userId))
             {

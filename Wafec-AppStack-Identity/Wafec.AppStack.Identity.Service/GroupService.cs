@@ -8,7 +8,7 @@ using Wafec.AppStack.Identity.Core.Database;
 
 namespace Wafec.AppStack.Identity.Service
 {
-    public class GroupService : IGroupService
+    public class GroupService : BaseService, IGroupService
     {
         public IRepository Repository { get; private set; }
         public IUserService UserService { get; private set; }
@@ -38,10 +38,10 @@ namespace Wafec.AppStack.Identity.Service
 
         public bool GroupExists(string name)
         {
-            return Repository.GetSet<Group>().Any(g => g.Name.ToLower().Equals(name?.ToLower()));
+            return Repository.GetSet<Group>().Any(g => g.Deleted == false && g.Name.ToLower().Equals(name?.ToLower()));
         }
 
-        public UserGroup AddUser(long groupId, long userId)
+        public UserGroup AddUserGroup(long groupId, long userId)
         {
             if (!Repository.GetSet<UserGroup>().Any(ug => ug.UserId == userId && ug.GroupId == groupId))
             {
@@ -61,14 +61,14 @@ namespace Wafec.AppStack.Identity.Service
 
         public Group FindGroup(long id)
         {
-            var group = Repository.GetSet<Group>().FirstOrDefault(g => g.Id == id);
+            var group = Repository.GetSet<Group>().FirstOrDefault(g => g.Deleted == false && g.Id == id);
             if (group == null)
                 throw new NotFoundException();
             else
                 return group;
         }
 
-        public GroupRole AddRole(long groupId, long roleId)
+        public GroupRole AddGroupRole(long groupId, long roleId)
         {
             if (!Repository.GetSet<GroupRole>().Any(gr => gr.GroupId == groupId && gr.RoleId == roleId))
             {
@@ -84,6 +84,13 @@ namespace Wafec.AppStack.Identity.Service
             {
                 throw new ConflictException();
             }
+        }
+
+        public void DeleteGroup(long id)
+        {
+            var group = FindGroup(id);
+            group.Deleted = true;
+            Repository.Update(group);
         }
     }
 }

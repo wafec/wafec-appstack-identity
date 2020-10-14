@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthToken.cs" />
     <Compile Include="Database\ITransaction.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="GroupRole.cs" />

@@ -21,6 +21,7 @@ namespace Wafec.AppStack.Identity.Configuration.IoC
             Bind<IRoleService>().To<RoleService>();
             Bind<IProjectService>().To<ProjectService>();
             Bind<IGroupService>().To<GroupService>();
+            Bind<IAuthTokenService>().To<AuthTokenService>();
         }
     }
 }

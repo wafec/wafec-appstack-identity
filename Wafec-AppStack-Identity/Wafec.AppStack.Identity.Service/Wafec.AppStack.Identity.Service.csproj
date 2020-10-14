@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthTokenService.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="ConflictException.cs" />
+    <Compile Include="ExpiredTokenException.cs" />
     <Compile Include="GroupService.cs" />
+    <Compile Include="IAuthTokenService.cs" />
     <Compile Include="IGroupService.cs" />
     <Compile Include="InvalidDataException.cs" />
     <Compile Include="IPasswordService.cs" />

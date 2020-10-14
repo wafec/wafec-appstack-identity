@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\AuthTokenConfiguration.cs" />
     <Compile Include="Database\GroupConfiguration.cs" />
     <Compile Include="Database\GroupRoleConfiguration.cs" />
     <Compile Include="Database\PasswordAlgorithmConfiguration.cs" />

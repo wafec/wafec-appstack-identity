@@ -33,6 +33,7 @@ namespace Wafec.AppStack.Identity.App.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel(
+                new AutoMapperModule(),
                 new ServiceModule()
                 );
             try

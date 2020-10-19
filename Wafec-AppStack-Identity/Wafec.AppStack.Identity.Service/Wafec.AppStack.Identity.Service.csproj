@@ -53,6 +53,7 @@
     <Compile Include="IProjectService.cs" />
     <Compile Include="IRoleService.cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="Models\AuthTokenService\AuthTokenCreateView.cs" />
     <Compile Include="PasswordAlgorithms.cs" />
     <Compile Include="PasswordLevels.cs" />
     <Compile Include="PasswordService.cs" />

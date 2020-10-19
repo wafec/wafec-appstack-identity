@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapper\Services\AuthTokenServiceProfile.cs" />
     <Compile Include="Database\AuthTokenConfiguration.cs" />
     <Compile Include="Database\GroupConfiguration.cs" />
     <Compile Include="Database\GroupRoleConfiguration.cs" />
@@ -57,10 +58,14 @@
     <Compile Include="Database\UserConfiguration.cs" />
     <Compile Include="Database\UserGroupConfiguration.cs" />
     <Compile Include="Database\UserRoleConfiguration.cs" />
+    <Compile Include="IoC\AutoMapperModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IoC\ServiceModule.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper">
+      <Version>10.1.1</Version>
+    </PackageReference>
     <PackageReference Include="EntityFramework">
       <Version>6.4.4</Version>
     </PackageReference>
@@ -81,5 +86,6 @@
       <Name>Wafec.AppStack.Identity.Service</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

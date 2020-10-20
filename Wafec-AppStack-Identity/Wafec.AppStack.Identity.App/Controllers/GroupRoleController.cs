@@ -30,5 +30,15 @@ namespace Wafec.AppStack.Identity.App.Controllers
                 return Json(groupRole);
             }
         }
+
+        public IHttpActionResult Delete([FromUri] RemoveGroupRoleModel model)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                GroupService.RemoveGroupRole(model.GroupId, model.RoleId);
+                t.Commit();
+                return Ok();
+            }
+        }
     }
 }

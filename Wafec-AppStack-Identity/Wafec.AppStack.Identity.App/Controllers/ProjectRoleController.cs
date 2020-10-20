@@ -30,5 +30,15 @@ namespace Wafec.AppStack.Identity.App.Controllers
                 return Json(projectRole);
             }
         }
+
+        public IHttpActionResult Delete([FromUri] RemoveProjectRoleModel model)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                ProjectService.RemoveRole(model.ProjectId, model.RoleId);
+                t.Commit();
+                return Ok();
+            }
+        }
     }
 }

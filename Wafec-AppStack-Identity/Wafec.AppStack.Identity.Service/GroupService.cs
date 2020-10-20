@@ -92,5 +92,37 @@ namespace Wafec.AppStack.Identity.Service
             group.Deleted = true;
             Repository.Update(group);
         }
+
+        public void RemoveUserGroup(long groupId, long userId)
+        {
+            var userGroup = FindUserGroup(groupId, userId);
+            userGroup.Deleted = true;
+            Repository.Update(userGroup);
+        }
+
+        public void RemoveGroupRole(long groupId, long roleId)
+        {
+            var groupRole = FindGroupRole(groupId, roleId);
+            groupRole.Deleted = true;
+            Repository.Update(groupRole);
+        }
+
+        public UserGroup FindUserGroup(long groupId, long userId)
+        {
+            var userGroup = Repository.GetSet<UserGroup>().FirstOrDefault(ug => ug.Deleted == false && ug.GroupId == groupId && ug.UserId == userId);
+            if (userGroup != null)
+                return userGroup;
+            else
+                throw new NotFoundException();
+        }
+
+        public GroupRole FindGroupRole(long groupId, long roleId)
+        {
+            var groupRole = Repository.GetSet<GroupRole>().FirstOrDefault(gr => gr.Deleted == false && gr.GroupId == groupId && gr.RoleId == roleId);
+            if (groupRole != null)
+                return groupRole;
+            else
+                throw new NotFoundException();
+        }
     }
 }

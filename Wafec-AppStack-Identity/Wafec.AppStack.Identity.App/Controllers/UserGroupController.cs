@@ -30,5 +30,14 @@ namespace Wafec.AppStack.Identity.App.Controllers
                 return Json(userGroup);
             }
         }
+
+        public IHttpActionResult Delete([FromUri] RemoveUserGroupModel model)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                GroupService.RemoveUserGroup(model.GroupId, model.UserId);
+                return Ok();
+            }
+        }
     }
 }

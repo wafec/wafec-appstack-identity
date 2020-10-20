@@ -18,6 +18,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
             Property(m => m.Id).HasColumnName("id");
             Property(m => m.RoleId).HasColumnName("role_id");
             Property(m => m.GroupId).HasColumnName("group_id");
+            Property(m => m.Deleted).HasColumnName("deleted");
             HasRequired(m => m.Role).WithMany().HasForeignKey(m => m.RoleId);
             HasRequired(m => m.Group).WithMany().HasForeignKey(m => m.GroupId);
         }

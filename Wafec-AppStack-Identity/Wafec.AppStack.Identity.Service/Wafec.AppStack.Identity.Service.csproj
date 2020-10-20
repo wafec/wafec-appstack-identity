@@ -69,6 +69,9 @@
     <PackageReference Include="EntityFramework">
       <Version>6.4.4</Version>
     </PackageReference>
+    <PackageReference Include="Wafec.AppStack.Shared">
+      <Version>0.0.2-dev</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wafec.AppStack.Identity.Core\Wafec.AppStack.Identity.Core.csproj">

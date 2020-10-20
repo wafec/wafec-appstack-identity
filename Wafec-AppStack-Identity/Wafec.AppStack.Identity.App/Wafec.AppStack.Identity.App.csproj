@@ -226,18 +226,27 @@
     </Compile>
     <Compile Include="Models\GroupController\CreateGroupModel.cs" />
     <Compile Include="Models\GroupRoleController\CreateGroupRoleModel.cs" />
+    <Compile Include="Models\GroupRoleController\RemoveGroupRoleModel.cs" />
     <Compile Include="Models\ProjectController\CreateProjectModel.cs" />
+    <Compile Include="Models\ProjectController\UpdateProjectModel.cs" />
     <Compile Include="Models\ProjectGroupController\CreateProjectGroupModel.cs" />
+    <Compile Include="Models\ProjectGroupController\RemoveProjectGroupModel.cs" />
     <Compile Include="Models\ProjectGroupRoleController\CreateProjectGroupRoleModel.cs" />
+    <Compile Include="Models\ProjectGroupRoleController\RemoveProjectGroupRoleModel.cs" />
     <Compile Include="Models\ProjectRoleController\CreateProjectRoleModel.cs" />
+    <Compile Include="Models\ProjectRoleController\RemoveProjectRoleModel.cs" />
     <Compile Include="Models\ProjectUserController\CreateProjectUserModel.cs" />
+    <Compile Include="Models\ProjectUserController\RemoveProjectUserModel.cs" />
     <Compile Include="Models\ProjectUserRoleController\CreateProjectUserRoleModel.cs" />
+    <Compile Include="Models\ProjectUserRoleController\RemoveProjectUserRoleModel.cs" />
     <Compile Include="Models\RoleController\CreateRoleModel.cs" />
     <Compile Include="Models\TokenController\CreateTokenModel.cs" />
     <Compile Include="Models\UserController\ChangeUserPasswordModel.cs" />
     <Compile Include="Models\UserController\CreateUserModel.cs" />
     <Compile Include="Models\UserGroupController\CreateUserGroupModel.cs" />
+    <Compile Include="Models\UserGroupController\RemoveUserGroupModel.cs" />
     <Compile Include="Models\UserRoleController\CreateUserRoleModel.cs" />
+    <Compile Include="Models\UserRoleController\RemoveUserRoleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

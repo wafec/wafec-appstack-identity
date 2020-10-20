@@ -15,5 +15,9 @@ namespace Wafec.AppStack.Identity.Service
         Group FindGroup(long id);
         GroupRole AddGroupRole(long groupId, long roleId);
         void DeleteGroup(long id);
+        void RemoveUserGroup(long groupId, long userId);
+        void RemoveGroupRole(long groupId, long roleId);
+        UserGroup FindUserGroup(long groupId, long userId);
+        GroupRole FindGroupRole(long groupId, long roleId);
     }
 }

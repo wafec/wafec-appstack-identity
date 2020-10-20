@@ -19,6 +19,7 @@ namespace Wafec.AppStack.Identity.Configuration.Database
             Property(m => m.Name).HasColumnName("name");
             Property(m => m.Description).HasColumnName("description");
             Property(m => m.OwnerId).HasColumnName("owner_id");
+            Property(m => m.Deleted).HasColumnName("deleted");
             HasRequired(m => m.Owner).WithMany().HasForeignKey(m => m.OwnerId);
         }
     }

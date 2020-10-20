@@ -30,5 +30,25 @@ namespace Wafec.AppStack.Identity.App.Controllers
                 return Json(project);
             }
         }
+
+        public IHttpActionResult Put(long id, [FromBody] UpdateProjectModel model)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                var project = ProjectService.UpdateProject(id, model.Name, model.Description);
+                t.Commit();
+                return Json(project);
+            }
+        }
+
+        public IHttpActionResult Delete(long id)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                ProjectService.DeleteProject(id);
+                t.Commit();
+                return Ok();
+            }
+        }
     }
 }

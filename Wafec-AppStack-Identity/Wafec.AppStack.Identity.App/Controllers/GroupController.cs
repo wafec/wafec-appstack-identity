@@ -30,5 +30,15 @@ namespace Wafec.AppStack.Identity.App.Controllers
                 return Json(group);
             }
         }
+
+        public IHttpActionResult Delete(long id)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                GroupService.DeleteGroup(id);
+                t.Commit();
+                return Ok();
+            }
+        }
     }
 }

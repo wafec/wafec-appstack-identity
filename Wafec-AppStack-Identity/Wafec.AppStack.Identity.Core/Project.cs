@@ -13,5 +13,6 @@ namespace Wafec.AppStack.Identity.Core
         public string Description { get; set; }
         public long OwnerId { get; set; }
         public virtual User Owner { get; set; }
+        public bool Deleted { get; set; }
     }
 }

@@ -30,5 +30,15 @@ namespace Wafec.AppStack.Identity.App.Controllers
                 return Json(projectUser);
             }
         }
+
+        public IHttpActionResult Delete([FromUri] RemoveProjectUserModel model)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                ProjectService.RemoveProjectUser(model.ProjectId, model.UserId);
+                t.Commit();
+                return Ok();
+            }
+        }
     }
 }

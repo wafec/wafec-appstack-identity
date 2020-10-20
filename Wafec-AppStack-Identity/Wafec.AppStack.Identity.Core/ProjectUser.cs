@@ -13,5 +13,6 @@ namespace Wafec.AppStack.Identity.Core
         public virtual Project Project { get; set; }
         public long UserId { get; set; }
         public virtual User User { get; set; }
+        public bool Deleted { get; set; }
     }
 }

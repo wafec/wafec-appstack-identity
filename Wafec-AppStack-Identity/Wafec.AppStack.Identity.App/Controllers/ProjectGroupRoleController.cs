@@ -30,5 +30,15 @@ namespace Wafec.AppStack.Identity.App.Controllers
                 return Json(projectGroupRole);
             }
         }
+
+        public IHttpActionResult Delete([FromUri] RemoveProjectGroupRoleModel model)
+        {
+            using (var t = Repository.BeginTransaction())
+            {
+                ProjectService.RemoveGroupRole(model.ProjectId, model.GroupId, model.RoleId);
+                t.Commit();
+                return Ok();
+            }
+        }
     }
 }

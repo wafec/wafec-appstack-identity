@@ -267,7 +267,7 @@ namespace Wafec.AppStack.Identity.Service
 
         public ProjectRole FindProjectRole(long projectId, long roleId)
         {
-            var projectRole = Repository.GetSet<ProjectRole>().First(pr => pr.Deleted == false && pr.ProjectId == projectId && pr.RoleId == roleId);
+            var projectRole = Repository.GetSet<ProjectRole>().FirstOrDefault(pr => pr.Deleted == false && pr.ProjectId == projectId && pr.RoleId == roleId);
             if (projectRole != null)
                 return projectRole;
             else

@@ -109,13 +109,13 @@ namespace Wafec.AppStack.Identity.ServiceTests
         }
 
         [TestMethod]
-        public void TestUserExists()
+        public void TestExistsUser()
         {
-            var result = UserService.UserExists("User1");
+            var result = UserService.ExistsUser("User1");
             Assert.IsTrue(result);
-            result = UserService.UserExists("USER1");
+            result = UserService.ExistsUser("USER1");
             Assert.IsTrue(result);
-            result = UserService.UserExists("User3");
+            result = UserService.ExistsUser("User3");
             Assert.IsFalse(result);
         }
     }

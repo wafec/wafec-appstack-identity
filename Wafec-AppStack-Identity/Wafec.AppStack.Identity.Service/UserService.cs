@@ -69,7 +69,7 @@ namespace Wafec.AppStack.Identity.Service
         {
             ThrowsIfEmpty(name, password);
 
-            if (!UserExists(name))
+            if (!ExistsUser(name))
             {
                 if (!PasswordService.IsStrongEnough(password, CurrentPasswordLevel))
                 {
@@ -94,7 +94,7 @@ namespace Wafec.AppStack.Identity.Service
             }
         }
 
-        public bool UserExists(string name)
+        public bool ExistsUser(string name)
         {
             return Repository.GetSet<User>().Any(u => u.Deleted == false && u.Name.ToLower().Equals(name.ToLower()));
         }
@@ -208,7 +208,7 @@ namespace Wafec.AppStack.Identity.Service
                 throw new NotFoundException();
         }
 
-        public bool UserExists(string name, string password)
+        public bool ExistsUser(string name, string password)
         {
             return FindUser(name, password) != null;
         }

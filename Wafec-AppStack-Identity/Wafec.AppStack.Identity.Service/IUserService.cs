@@ -10,8 +10,8 @@ namespace Wafec.AppStack.Identity.Service
     public interface IUserService
     {
         User CreateUser(string name, string password);
-        bool UserExists(string name);
-        bool UserExists(string name, string password);
+        bool ExistsUser(string name);
+        bool ExistsUser(string name, string password);
         UserRole AddUserRole(long userId, long roleId);
         User FindUser(long id);
         User ChangePassword(long id, string currentPassword, string newPassword);

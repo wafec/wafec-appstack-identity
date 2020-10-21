@@ -70,7 +70,7 @@
       <Version>6.4.4</Version>
     </PackageReference>
     <PackageReference Include="Wafec.AppStack.Shared">
-      <Version>0.0.2-dev</Version>
+      <Version>0.0.3-dev</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
